@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,10 +15,10 @@ public class Ticket {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn (name = "ticket_id")
+    @JoinColumn (name = "movie_session_id")
     private MovieSession movieSession;
-    @OneToOne
-    @JoinColumn (name = "user_id", unique = true)
+    @ManyToOne
+    @JoinColumn (name = "user_id", unique = false)
     private User user;
 
     public Long getId() {
